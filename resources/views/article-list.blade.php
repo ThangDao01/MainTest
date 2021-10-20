@@ -918,6 +918,15 @@
                                 </div>
                             </div>
                             <div class="panel-container show">
+                                    @if (count($errors) > 0)
+                                        <div class="panel-tag">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                 <div class="panel-content">
                                     <!-- datatable start -->
                                     <table id="dt-basic-example" class="table table-bordered table-hover table-striped w-100"

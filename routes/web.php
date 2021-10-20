@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ArticleController::class,'listArticle']);
 Route::get('/test',function (){
-    return Article::select(['url','thumbnail','title','category','description','detail','source'])->get();
+    $resultExcel = Article::select(['url','thumbnail','title','category','description','detail','source'])->get();
+    return $resultExcel;
 });
 Route::get('/listArticle', [ArticleController::class,'listArticle']);
 

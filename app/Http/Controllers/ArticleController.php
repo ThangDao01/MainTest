@@ -17,7 +17,7 @@ class ArticleController extends Controller
         ]);
     }
     public function export_csv(){
-        return Excel::download(new ArticleExport() , 'product.xlsx');
+        return Excel::download(new ArticleExport() , 'article.xlsx');
     }
     public  function import_csv(Request $request){
         $path = $request->file('file')->getRealPath();
