@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c02f33df341e0b7ada31d5f2d83259ef",
+    "content-hash": "cd235ea60454caaa37a4be36b535f9c9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2245,6 +2245,64 @@
                 "source": "https://github.com/opis/closure/tree/3.6.2"
             },
             "time": "2021-04-09T13:42:10+00:00"
+        },
+        {
+            "name": "pallares/laravel-nuxt",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/skyrpex/laravel-nuxt.git",
+                "reference": "0822ab53781baa66f9706e5e620ab3697cfe53ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/skyrpex/laravel-nuxt/zipball/0822ab53781baa66f9706e5e620ab3697cfe53ea",
+                "reference": "0822ab53781baa66f9706e5e620ab3697cfe53ea",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.5.*|5.6.*|5.7.*|5.8.*|^6.0|^7.0|^8.0",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Pallares\\LaravelNuxt\\LaravelNuxtServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pallares\\LaravelNuxt\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cristian Pallarés",
+                    "email": "cristian@pallares.io",
+                    "homepage": "https://pallares.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Build a SPA with Laravel and Nuxt",
+            "homepage": "https://github.com/skyrpex/laravel-nuxt",
+            "keywords": [
+                "SPA",
+                "laravel",
+                "nuxt",
+                "vue"
+            ],
+            "support": {
+                "issues": "https://github.com/skyrpex/laravel-nuxt/issues",
+                "source": "https://github.com/skyrpex/laravel-nuxt/tree/1.5.0"
+            },
+            "abandoned": true,
+            "time": "2020-09-10T08:14:42+00:00"
         },
         {
             "name": "phpoffice/phpspreadsheet",

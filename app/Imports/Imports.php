@@ -28,10 +28,9 @@ class Imports implements ToCollection,WithHeadingRow
 
     public function collection(Collection $rows)
     {
-
         Validator::make($rows->toArray(), [
             '*.url' => 'required',
-            '*.thumbnail' => 'required|dimensions',
+            '*.thumbnail' => 'required|mimes:jpg,png',
             '*.title' => 'required',
             '*.category' => 'required',
             '*.description' => 'required',
@@ -49,6 +48,7 @@ class Imports implements ToCollection,WithHeadingRow
 //                'created_at' => Carbon::now('Asia/Ho_Chi_Minh'),
 //                'updated_at' => Carbon::now('Asia/Ho_Chi_Minh'),
 //            ]);
+
             $obj = new Article();
             $obj->url = $row['url'];
             $obj->thumbnail = $row['thumbnail'];

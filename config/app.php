@@ -166,7 +166,7 @@ return [
          * Package Service Providers...
          */
         Maatwebsite\Excel\ExcelServiceProvider::class,
-
+        Pallares\LaravelNuxt\LaravelNuxtServiceProvider::class,
         /*
          * Application Service Providers...
          */
