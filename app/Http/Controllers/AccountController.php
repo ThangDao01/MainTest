@@ -41,13 +41,19 @@ class AccountController extends Controller
         if (Auth::attempt($arr)) {
             $account = Account::where('email', '=', $request->get('Email'))->first();
             if ($account->Status == 1) {
-                dd('Bạn đang đăng nhập trên thiết bị khác', $arr);
+//                return redirect('https://www.youtube.com');
+                return 2;
+//                dd('Bạn đang đăng nhập trên thiết bị khác', $arr);
             }
             $account->Status = 1;
             $account->save();
-            dd('Đăng nhập thành công', $arr);
+            return 1;
+//            return redirect('https://www.facebook.com');
+//            dd('Đăng nhập thành công', $arr);
         } else {
-            dd('Sai tài khoản hoặc mật khẩu', $arr);
+//            return redirect('https://www.youtube.com');
+            return 3;
+//            dd('Sai tài khoản hoặc mật khẩu', $arr);
         }
     }
 
@@ -76,7 +82,9 @@ class AccountController extends Controller
         $obj->save();
         Session::flash('message', 'Account created successfully<br/> <strong>Please check your email to receive the password</strong>');
         Session::flash('style', 'success');
-        return redirect('/account/login');
+        return 'Done';
+
+//        return redirect('/account/login');
     }
 
     public function enter_Email_Form()
@@ -108,6 +116,19 @@ class AccountController extends Controller
             'email' => $email
         ]);
     }
+    public function new_Password($email)
+    {
+        $account = Account::where('email', '=', $email)->first();
+        if ($account){
+            $pass = $this->randomPass();
+            $account->password = bcrypt($pass);
+            (new MailController)->registerMail($account->email, $account->FullName, $pass);
+            $account->save();
+            return 1;
+        }
+        return 2;
+    }
+
     public function rs_Password(Request $request, $email)
     {
         $arr = [
@@ -115,17 +136,18 @@ class AccountController extends Controller
             'password' => $request->get('password'),
         ];
         if (!Auth::attempt($arr)) {
-            Session::flash('message', 'Sai mật khẩu vui lòng nhập lại');
-            Session::flash('style', 'danger');
-//            return back();
-            dd('Sai mật khẩu vui lòng nhập lại');
+//            Session::flash('message', 'Sai mật khẩu vui lòng nhập lại');
+//            Session::flash('style', 'danger');
+////            return back();
+//            dd('Sai mật khẩu vui lòng nhập lại');
+            return 2;
         }
         $account = Account::where('email', '=', $email)->first();
         $account->password = bcrypt($request->get('new-Password'));
         (new MailController)->registerMail($account->email, $account->FullName, $request->get('new-Password'));
         $account->save();
-        Session::flash('message', 'Đổi mật khẩu thành công');
-        Session::flash('style', 'success');
-        return redirect('/account/login');
+//        Session::flash('message', 'Đổi mật khẩu thành công');
+//        Session::flash('style', 'success');
+        return 1;
     }
 }

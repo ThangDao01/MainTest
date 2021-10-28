@@ -21,6 +21,16 @@ terminal chạy lệnh
 php artisan queue:work
 
 
+Cài đặt package jwt-auth
+
+composer require tymon/jwt-auth
+
+Mở composer.json lên và sửa lại phiên bản jwt thành:
+
+"require": {
+"tymon/jwt-auth": "1.0.0-rc.2"
+},
+
 
 
 

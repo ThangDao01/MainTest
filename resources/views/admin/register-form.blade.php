@@ -181,7 +181,7 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
                                         {{\Illuminate\Support\Facades\Session::get('message')}}
                                     </div>
                                 @endif
-                                <form action="{{'/account/register'}}" method="POST">
+                                <form action="{{'/api/account/register'}}" method="POST">
                                     @csrf
                                     <div class="form-group">
                                         <label class="form-label" for="username">Full name</label>

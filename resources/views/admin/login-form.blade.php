@@ -22,7 +22,6 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
     <meta name="msapplication-tap-highlight" content="no">
     <!-- base css -->
     <link id="vendorsbundle" rel="stylesheet" media="screen, print" href="{{asset('css/vendors.bundle.css')}}">
-    <link id="vendorsbundle" rel="stylesheet" media="screen, print" href="{{asset('css/vendors.bundle.css')}}">
     <link id="appbundle" rel="stylesheet" media="screen, print" href="{{asset('css/app.bundle.css')}}">
     <link id="mytheme" rel="stylesheet" media="screen, print" href="#">
     <link id="myskin" rel="stylesheet" media="screen, print" href="{{asset('css/skins/skin-master.css')}}">
@@ -181,7 +180,7 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
                                         {!! \Illuminate\Support\Facades\Session::get('message') !!}
                                     </div>
                                 @endif
-                                <form action="{{'/account/login'}}" method="POST">
+                                <form action="{{'/api/account/login'}}" method="POST">
                                     @csrf
                                     <div class="form-group">
                                         <label class="form-label" for="email">Email </label>

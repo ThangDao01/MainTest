@@ -18,36 +18,36 @@ use Illuminate\Support\Facades\Session;
 |
 */
 
-Route::get('/', [ArticleController::class,'listArticle']);
+Route::get('/', [ArticleController::class, 'listArticle']);
 //Route::get('/test', [MailController::class,'registerMail']);
-Route::get('/test',function (){
-    if (Account::where('email', '=', 'thangdao202@gmail.com')->where('Status','=',1)->first()) {
+Route::get('/test', function () {
+    if (Account::where('email', '=', 'thangdao202@gmail.com')->where('Status', '=', 1)->first()) {
         return 'đã login';
     }
     return 'chưa login';
 });
 
-Route::get('/listArticle', [ArticleController::class,'listArticle']);
+Route::get('/listArticle', [ArticleController::class, 'listArticle']);
 
-Route::post('/export-csv',[ArticleController::class,'export_csv']);
-Route::post('/import-csv',[ArticleController::class,'import_csv']);
+//Route::get('/export-csv',[ArticleController::class,'export_csv']);
+//Route::post('/import-csv', [ArticleController::class, 'import_csv']);
 
-Route::get('/account/list',[AccountController::class,'listAccount']);
+Route::get('/account/list', [AccountController::class, 'listAccount']);
 
 //login
-Route::get('/account/login',[AccountController::class,'LoginForm']);
-Route::post('/account/login',[AccountController::class,'LoginPost']);
-
-//register
-Route::get('/account/register',[AccountController::class,'RegisterForm']);
-Route::post('/account/register',[AccountController::class,'RegisterPost']);
+Route::get('/account/login', [AccountController::class, 'LoginForm']);
+//Route::post('/account/login', [AccountController::class, 'LoginPost']);
+//
+////register
+Route::get('/account/register', [AccountController::class, 'RegisterForm']);
+//Route::post('/account/register', [AccountController::class, 'RegisterPost']);
 
 //Account Action
 
-    Route::get('/enter-email',[AccountController::class,'enter_Email_Form']);
-    Route::post('/enter-email',[AccountController::class,'enter_Email']);
-    Route::get('/rs-pass/{email}',[AccountController::class,'rs_Password_Form']);
-    Route::post('/rs-pass/{email}',[AccountController::class,'rs_Password']);
+Route::get('/enter-email', [AccountController::class, 'enter_Email_Form']);
+Route::post('/enter-email', [AccountController::class, 'enter_Email']);
+Route::get('/rs-pass/{email}', [AccountController::class, 'rs_Password_Form']);
+Route::post('/rs-pass/{email}', [AccountController::class, 'rs_Password']);
 
 
 Route::get(

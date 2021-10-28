@@ -16,12 +16,13 @@ class ArticleController extends Controller
             'listArticle' => Article::all(),
         ]);
     }
-    public function export_csv(){
+    public function export_csv()
+    {
         return Excel::download(new ArticleExport() , 'article.xlsx');
     }
     public  function import_csv(Request $request){
         $path = $request->file('file')->getRealPath();
         Excel::import(new Imports, $path);
-        return back();
+        return 'done';
     }
 }

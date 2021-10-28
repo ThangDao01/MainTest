@@ -903,7 +903,7 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <form action="{{url('export-csv')}}" method="POST">
+                                    <form action="{{url('api/export-csv')}}" method="POST">
                                         @csrf
                                         <div class="form-group">
                                             <div class="form-group" style="margin: 10px">

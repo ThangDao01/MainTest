@@ -30,7 +30,7 @@ class Imports implements ToCollection,WithHeadingRow
     {
         Validator::make($rows->toArray(), [
             '*.url' => 'required',
-            '*.thumbnail' => 'required|mimes:jpg,png',
+            '*.thumbnail' => 'required',
             '*.title' => 'required',
             '*.category' => 'required',
             '*.description' => 'required',
