@@ -5,6 +5,6 @@
         "build": "laravel-nuxt build"
     },
     "dependencies": {
-        "laravel-nuxt": "^1.0.0"
+        "laravel-nuxt": "^1.4.3"
     }
 }
