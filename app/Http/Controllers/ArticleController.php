@@ -16,6 +16,29 @@ class ArticleController extends Controller
             'listArticle' => Article::all(),
         ]);
     }
+    public function createArticle(Request $request){
+        $obj = new Article();
+        $obj->url = $request->get('url');
+        $obj->thumbnail = $request->get('thumbnail');
+        $obj->title = $request->get('title');
+        $obj->category = $request->get('category');
+        $obj->description = $request->get('description');
+        $obj->detail = $request->get('detail');
+        $obj->source = $request->get('source');
+        $obj->save();
+    }
+    public function update($id, Request $request)
+    {
+        $obj = Article::find($id);
+        $obj->url = $request->get('url');
+        $obj->thumbnail = $request->get('thumbnail');
+        $obj->title = $request->get('title');
+        $obj->category = $request->get('category');
+        $obj->description = $request->get('description');
+        $obj->detail = $request->get('detail');
+        $obj->source = $request->get('source');
+        $obj->save();
+    }
     public function export_csv()
     {
         return Excel::download(new ArticleExport() , 'article.xlsx');

@@ -33,9 +33,14 @@ Route::get('account/data', function () {
 Route::get('news/{id}',function ($id){
     return Article::find($id);
 });
+
+
+
 Route::post('export-csv',[ArticleController::class,'export_csv']);
 Route::post('import-csv',[ArticleController::class,'import_csv']);
 
+Route::post('article/create',[ArticleController::class,'createArticle']);
+Route::post('article/update/{id}', [ArticleController::class,'update']);
 
 //login
 Route::post('account/login', [AccountController::class, 'LoginPost']);
