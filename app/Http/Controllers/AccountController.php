@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use phpDocumentor\Reflection\Types\Object_;
 
 class AccountController extends Controller
 {
@@ -41,19 +44,14 @@ class AccountController extends Controller
         if (Auth::attempt($arr)) {
             $account = Account::where('email', '=', $request->get('Email'))->first();
             if ($account->Status == 1) {
-//                return redirect('https://www.youtube.com');
                 return 2;
-//                dd('Bạn đang đăng nhập trên thiết bị khác', $arr);
             }
             $account->Status = 1;
             $account->save();
+            Session::put('account',$account);
             return 1;
-//            return redirect('https://www.facebook.com');
-//            dd('Đăng nhập thành công', $arr);
         } else {
-//            return redirect('https://www.youtube.com');
             return 3;
-//            dd('Sai tài khoản hoặc mật khẩu', $arr);
         }
     }
 
@@ -67,7 +65,7 @@ class AccountController extends Controller
         if (Account::where('email', '=', $request->get('email'))->first()) {
             Session::flash('message', 'Invalid email try another email');
             Session::flash('style', 'danger');
-            return redirect('/account/register');
+            return 2;
         }
         $obj = new Account();
         $obj->FullName = $request->get('fullName');
@@ -82,7 +80,7 @@ class AccountController extends Controller
         $obj->save();
         Session::flash('message', 'Account created successfully<br/> <strong>Please check your email to receive the password</strong>');
         Session::flash('style', 'success');
-        return 'Done';
+        return 1;
 
 //        return redirect('/account/login');
     }
@@ -149,5 +147,19 @@ class AccountController extends Controller
 //        Session::flash('message', 'Đổi mật khẩu thành công');
 //        Session::flash('style', 'success');
         return 1;
+    }
+
+    public function userInformation(){
+        if (Session::has('account')){
+            return Session::get('account');
+        }
+       return User::all('email','password');
+    }
+    public function test(Request $request){
+        $arr = [
+            'email' => 'thangdao202@gmail.com',
+            'password' => 'DXYLob2DVI',
+        ];
+        Auth::attempt($arr);
     }
 }

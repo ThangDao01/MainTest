@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('test',[AccountController::class, 'test']);
+
 Route::get('article', function () {
     // Let's return fake information.
     return [
@@ -34,23 +36,24 @@ Route::get('news/{id}',function ($id){
     return Article::find($id);
 });
 
-
-
 Route::post('export-csv',[ArticleController::class,'export_csv']);
 Route::post('import-csv',[ArticleController::class,'import_csv']);
 
 Route::post('article/create',[ArticleController::class,'createArticle']);
 Route::post('article/update/{id}', [ArticleController::class,'update']);
 
+Route::get('user', [AccountController::class, 'userInformation']);
+
 //login
-Route::post('account/login', [AccountController::class, 'LoginPost']);
+Route::post('login', [AccountController::class, 'LoginPost']);
 
 //register
-Route::post('account/register', [AccountController::class, 'RegisterPost']);
+Route::post('register', [AccountController::class, 'RegisterPost']);
+
 
 Route::get('account/new-password/{email}', [AccountController::class, 'new_Password']);
 Route::post('account/reset-password/{email}', [AccountController::class, 'rs_Password']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request){
+//    return $request->user();
+//});
